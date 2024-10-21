@@ -84,9 +84,9 @@ const credentialsFunc = function (id) {
 const handler = async function (req, res) {
 
     let payload, status;
-    
+
     // Authenticate incoming request
-    
+
     try {
         const { credentials, artifacts } = await Hawk.server.authenticate(req, credentialsFunc);
         payload = `Hello ${credentials.user} ${artifacts.ext}`;
@@ -520,7 +520,7 @@ implementors must manually verify that the host header received matches their ex
 ### Where is the protocol specification?
 
 If you are looking for some prose explaining how all this works, **this is it**. **Hawk** is being developed as an open source
-project instead of a standard. In other words, the [code](https://github.com/hueniverse/hawk/tree/master/lib) is the specification. Not sure about
+project instead of a standard. In other words, the [code](https://github.com/mozilla/hawk/tree/main/lib) is the specification. Not sure about
 something? Open an issue!
 
 ### Is it done?
@@ -530,7 +530,7 @@ Yes. The protocol is finished. This module might change with enhancements and bu
 ### Where can I find **Hawk** implementations in other languages?
 
 **Hawk**'s only reference implementation is provided in JavaScript as a node.js module. However, it has been ported to other languages.
-The full list is maintained [here](https://github.com/hueniverse/hawk/issues?labels=port&state=closed). Please add an issue if you are
+The full list is maintained [here](https://github.com/mozilla/hawk/issues?labels=port&state=closed). Please add an issue if you are
 working on another port. A cross-platform test-suite is in the works.
 
 ### Why isn't the algorithm part of the challenge or dynamically negotiated?

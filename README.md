@@ -1,13 +1,13 @@
-> [!Important] 
-> Mozilla has archived this repository because both the protocol and documentation have reached completion, with no further updates or changes necessary.
-> 
-> While the existing code will remain available for reference or fork, no further updates or support should be expected.
+> [!Important]
+> This fork is identical to <https://github.com/mozilla/hawk>, except that it no longer (indirectly) depends on large
+> internal Node.js libraries, making it more suitable for bundling in a browser environment or embedding in a small
+> Node.js project.
 
 # hawk
 
 #### HTTP Holder-Of-Key Authentication Scheme.
 
-Documentation of the protocol, and the JS API, is in https://github.com/mozilla/hawk/blob/main/API.md.
+Documentation of the protocol, and the JS API, is in https://github.com/onslip/hawk/blob/main/API.md.
 
 ## Ownership Changes
 
@@ -16,6 +16,7 @@ Then, after the 7.0.10 release, it was moved to the `hapijs/hawk` repository and
 Hapi later de-supported the library, after releasing version 8.0.0.
 It has since been moved to `mozilla/hawk` and is again released as `hawk`.
 All of the intermediate versions are also relased as `hawk`.
+This fork is `@onslip/hawk`, since Mozilla has archived the original repository.
 
 Changes are represented in GitHub releases on this repository.
 
