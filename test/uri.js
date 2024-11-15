@@ -2,7 +2,7 @@
 
 const Url = require('url');
 
-const B64 = require('@hapi/b64');
+const B64 = require('../lib/deps/hapi-b64');
 const Boom = require('@hapi/boom');
 const Code = require('@hapi/code');
 const Hawk = require('..');
