@@ -439,6 +439,42 @@ describe('Uri', () => {
             expect(bewit).to.equal('MTIzNDU2XDEzNTY0MjA3MDdca3NjeHdOUjJ0SnBQMVQxekRMTlBiQjVVaUtJVTl0T1NKWFRVZEc3WDloOD1ceGFuZHlhbmR6');
         });
 
+        it('returns a valid bewit value (empty query)', () => {
+
+            const credentials = {
+                id: '123456',
+                key: '2983d45yun89q',
+                algorithm: 'sha256'
+            };
+
+            const bewit = Hawk.uri.getBewit('https://example.com/somewhere/over/the/rainbow?', { credentials, ttlSec: 300, localtimeOffsetMsec: 1356420407232 - Hawk.utils.now(), ext: 'xandyandz' });
+            expect(bewit).to.equal('MTIzNDU2XDEzNTY0MjA3MDdcVExRbUllZktQSEJ4TWtsQ0ZUd0RseVpoV01TbWE2MmVBL2hyUTRyNjNEUT1ceGFuZHlhbmR6');
+        });
+
+        it('returns a valid bewit value (empty query, parsed uri)', () => {
+
+            const credentials = {
+                id: '123456',
+                key: '2983d45yun89q',
+                algorithm: 'sha256'
+            };
+
+            const bewit = Hawk.uri.getBewit(Url.parse('https://example.com/somewhere/over/the/rainbow?'), { credentials, ttlSec: 300, localtimeOffsetMsec: 1356420407232 - Hawk.utils.now(), ext: 'xandyandz' });
+            expect(bewit).to.equal('MTIzNDU2XDEzNTY0MjA3MDdcVExRbUllZktQSEJ4TWtsQ0ZUd0RseVpoV01TbWE2MmVBL2hyUTRyNjNEUT1ceGFuZHlhbmR6');
+        });
+
+        it('returns a valid bewit value (empty query, URL)', () => {
+
+            const credentials = {
+                id: '123456',
+                key: '2983d45yun89q',
+                algorithm: 'sha256'
+            };
+
+            const bewit = Hawk.uri.getBewit(new URL('https://example.com/somewhere/over/the/rainbow?'), { credentials, ttlSec: 300, localtimeOffsetMsec: 1356420407232 - Hawk.utils.now(), ext: 'xandyandz' });
+            expect(bewit).to.equal('MTIzNDU2XDEzNTY0MjA3MDdcVExRbUllZktQSEJ4TWtsQ0ZUd0RseVpoV01TbWE2MmVBL2hyUTRyNjNEUT1ceGFuZHlhbmR6');
+        });
+
         it('errors on invalid options', () => {
 
             expect(() => Hawk.uri.getBewit('https://example.com/somewhere/over/the/rainbow', 4)).to.throw('Invalid inputs');

@@ -1,5 +1,7 @@
 'use strict';
 
+const Url = require('url');
+
 const Code = require('@hapi/code');
 const Hawk = require('..');
 const Lab = require('@hapi/lab');
@@ -74,6 +76,42 @@ describe('Client', () => {
 
             const { header } = Hawk.client.header('https://example.net/somewhere/over/the/rainbow', 'POST', { credentials, timestamp: 1353809207, nonce: 'Ygvqdz', payload: '', contentType: 'text/plain' });
             expect(header).to.equal('Hawk id=\"123456\", ts=\"1353809207\", nonce=\"Ygvqdz\", hash=\"q/t+NNAkQZNlq/aAD6PlexImwQTxwgT2MahfTa9XRLA=\", mac=\"U5k16YEzn3UnBHKeBzsDXn067Gu3R4YaY6xOt9PYRZM=\"');
+        });
+
+        it('returns a valid authorization header (empty query)', () => {
+
+            const credentials = {
+                id: '123456',
+                key: '2983d45yun89q',
+                algorithm: 'sha256'
+            };
+
+            const { header } = Hawk.client.header('https://example.net/somewhere/over/the/rainbow?', 'POST', { credentials, timestamp: 1353809207, nonce: 'Ygvqdz', payload: '', contentType: 'text/plain' });
+            expect(header).to.equal('Hawk id=\"123456\", ts=\"1353809207\", nonce=\"Ygvqdz\", hash=\"q/t+NNAkQZNlq/aAD6PlexImwQTxwgT2MahfTa9XRLA=\", mac=\"30Tkl9Nf0VSg1Buk2Hq1UtcoqVtk2Z7h9rN7ooZ/ppQ=\"');
+        });
+
+        it('returns a valid authorization header (empty query, parsed uri)', () => {
+
+            const credentials = {
+                id: '123456',
+                key: '2983d45yun89q',
+                algorithm: 'sha256'
+            };
+
+            const { header } = Hawk.client.header(Url.parse('https://example.net/somewhere/over/the/rainbow?'), 'POST', { credentials, timestamp: 1353809207, nonce: 'Ygvqdz', payload: '', contentType: 'text/plain' });
+            expect(header).to.equal('Hawk id=\"123456\", ts=\"1353809207\", nonce=\"Ygvqdz\", hash=\"q/t+NNAkQZNlq/aAD6PlexImwQTxwgT2MahfTa9XRLA=\", mac=\"30Tkl9Nf0VSg1Buk2Hq1UtcoqVtk2Z7h9rN7ooZ/ppQ=\"');
+        });
+
+        it('returns a valid authorization header (empty query, URL)', () => {
+
+            const credentials = {
+                id: '123456',
+                key: '2983d45yun89q',
+                algorithm: 'sha256'
+            };
+
+            const { header } = Hawk.client.header(new URL('https://example.net/somewhere/over/the/rainbow?'), 'POST', { credentials, timestamp: 1353809207, nonce: 'Ygvqdz', payload: '', contentType: 'text/plain' });
+            expect(header).to.equal('Hawk id=\"123456\", ts=\"1353809207\", nonce=\"Ygvqdz\", hash=\"q/t+NNAkQZNlq/aAD6PlexImwQTxwgT2MahfTa9XRLA=\", mac=\"30Tkl9Nf0VSg1Buk2Hq1UtcoqVtk2Z7h9rN7ooZ/ppQ=\"');
         });
 
         it('returns a valid authorization header (pre hashed payload)', () => {

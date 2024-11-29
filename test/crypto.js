@@ -28,6 +28,42 @@ describe('Crypto', () => {
             })).to.equal('hawk.1.header\n1357747017\nk3k4j5\nGET\n/resource/something\nexample.com\n8080\n\n\n');
         });
 
+        it('should return a valid normalized string (absolute request uri)', () => {
+
+            expect(Hawk.crypto.generateNormalizedString('header', {
+                ts: 1357747017,
+                nonce: 'k3k4j5',
+                method: 'GET',
+                resource: 'http://example.com:8080/resource/something',
+                host: 'example.com',
+                port: 8080
+            })).to.equal('hawk.1.header\n1357747017\nk3k4j5\nGET\n/resource/something\nexample.com\n8080\n\n\n');
+        });
+
+        it('should return a valid normalized string (absolute request uri with empty query)', () => {
+
+            expect(Hawk.crypto.generateNormalizedString('header', {
+                ts: 1357747017,
+                nonce: 'k3k4j5',
+                method: 'GET',
+                resource: 'http://example.com:8080/resource/something?',
+                host: 'example.com',
+                port: 8080
+            })).to.equal('hawk.1.header\n1357747017\nk3k4j5\nGET\n/resource/something?\nexample.com\n8080\n\n\n');
+        });
+
+        it('should return a valid normalized string (absolute request uri with query)', () => {
+
+            expect(Hawk.crypto.generateNormalizedString('header', {
+                ts: 1357747017,
+                nonce: 'k3k4j5',
+                method: 'GET',
+                resource: 'http://example.com:8080/resource/something?a=1&b=2',
+                host: 'example.com',
+                port: 8080
+            })).to.equal('hawk.1.header\n1357747017\nk3k4j5\nGET\n/resource/something?a=1&b=2\nexample.com\n8080\n\n\n');
+        });
+
         it('should return a valid normalized string (ext)', () => {
 
             expect(Hawk.crypto.generateNormalizedString('header', {
