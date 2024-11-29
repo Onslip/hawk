@@ -323,6 +323,9 @@ Server-Authorization: Hawk mac="XIJRsMl/4oL+nn+vKoeVZPdCHXB4yJkNnBbTbHFZUYE=", h
 
 ## Browser Support and Considerations
 
+A browser script is provided for including using a `<script>` tag or via a bundler in [dist/](dist). It has no node.js
+dependencies.
+
 This library can be included in browser-based applications using Webpack or similar bundling technologies.
 
 **Hawk** relies on the _Server-Authorization_ and _WWW-Authenticate_ headers in its response to communicate with the client.

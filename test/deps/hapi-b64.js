@@ -1,5 +1,6 @@
 'use strict';
 
+const Buffer = require('buffer').Buffer;
 const Fs = require('fs');
 const Path = require('path');
 

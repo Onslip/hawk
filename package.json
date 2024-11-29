@@ -5,6 +5,7 @@
   "repository": "git://github.com/onslip/hawk",
   "main": "lib/index.js",
   "files": [
+    "dist",
     "lib"
   ],
   "keywords": [
@@ -20,9 +21,18 @@
   },
   "devDependencies": {
     "@hapi/code": "8.x.x",
-    "@hapi/lab": "22.x.x"
+    "@hapi/lab": "22.x.x",
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-terser": "~0.4.4",
+    "rollup-plugin-polyfill-node": "~0.13.0",
+    "rollup": "^4.27.4"
   },
   "scripts": {
+    "build-browser": "rm -rf dist && rollup -c browser.rollup.config.mjs",
+    "prepublish": "npm run-script build-browser",
     "test": "lab -a @hapi/code -t 100 -L",
     "test-cov-html": "lab -a @hapi/code -r html -o coverage.html"
   },
