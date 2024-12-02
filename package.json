@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "@hapi/boom": "9.x.x",
-    "@hapi/cryptiles": "5.x.x",
     "@hapi/hoek": "9.x.x"
   },
   "devDependencies": {
