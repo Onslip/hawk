@@ -2,7 +2,7 @@
 
 const Code = require('@hapi/code');
 const Hawk = require('..');
-const Hoek = require('@hapi/hoek');
+const Hoek = require('../lib/deps/hapi-hoek');
 const Lab = require('@hapi/lab');
 
 

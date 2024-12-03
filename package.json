@@ -14,9 +14,6 @@
     "scheme",
     "hawk"
   ],
-  "dependencies": {
-    "@hapi/hoek": "9.x.x"
-  },
   "devDependencies": {
     "@hapi/code": "8.x.x",
     "@hapi/lab": "22.x.x",
