@@ -4,6 +4,7 @@
   "version": "9.0.2-onslip.1",
   "repository": "git://github.com/onslip/hawk",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "dist",
     "lib"
@@ -26,7 +27,7 @@
     "rollup": "^4.27.4"
   },
   "scripts": {
-    "build-browser": "rm -rf dist && rollup -c browser.rollup.config.mjs",
+    "build-browser": "rm -rf dist && rollup -c browser.rollup.config.mjs && echo 'export * from \"..\";' | tee dist/browser{,.min}.d.ts",
     "prepublish": "npm run-script build-browser",
     "test": "lab -a @hapi/code -t 100 -L",
     "test-cov-html": "lab -a @hapi/code -r html -o coverage.html"

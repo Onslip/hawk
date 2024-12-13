@@ -1,7 +1,7 @@
 > [!Important]
 > This fork is identical to <https://github.com/mozilla/hawk>, except that it no longer (indirectly) depends on large
 > internal Node.js libraries, making it more suitable for bundling in a browser environment or embedding in a small
-> Node.js project.
+> Node.js project. Pre-build browser bundles and TypeScript definitions are also included.
 
 # hawk
 
