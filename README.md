@@ -1,13 +1,14 @@
-> [!Important]
-> This fork is identical to <https://github.com/mozilla/hawk>, except that it no longer (indirectly) depends on large
-> internal Node.js libraries, making it more suitable for bundling in a browser environment or embedding in a small
-> Node.js project. Pre-build browser bundles and TypeScript definitions are also included.
-
 # hawk
 
 #### HTTP Holder-Of-Key Authentication Scheme.
 
 Documentation of the protocol, and the JS API, is in https://github.com/onslip/hawk/blob/main/API.md.
+
+> [!Important]
+> This fork is identical to <https://github.com/mozilla/hawk>, except that it no longer (indirectly) depends on large
+> internal Node.js libraries, making it more suitable for bundling in a browser environment or embedding in a small
+> Node.js project. [Pre-built browser bundles](https://cdn.jsdelivr.net/npm/@onslip/hawk/dist/) and TypeScript
+> definitions are also included.
 
 ## Ownership Changes
 
