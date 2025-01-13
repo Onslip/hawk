@@ -1,7 +1,7 @@
 {
   "name": "@onslip/hawk",
   "description": "HTTP Hawk Authentication Scheme",
-  "version": "9.0.2-onslip.2",
+  "version": "9.0.2-onslip.3",
   "repository": "git://github.com/onslip/hawk",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
