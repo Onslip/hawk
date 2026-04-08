@@ -40,7 +40,7 @@ exports.createHash = function createHash(algorithm) {
 
 function convert(bufferOrString) {
     return bufferOrString instanceof Uint8Array
-        ? CryptoJS.enc.Base64.parse(btoa(String.fromCharCode.apply(null, bufferOrString)))
+        ? CryptoJS.enc.Base64.parse(btoa(Array.from(bufferOrString, byte => String.fromCharCode(byte)).join('')))
         : bufferOrString;
 }
 
